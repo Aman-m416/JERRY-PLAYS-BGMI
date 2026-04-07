@@ -205,28 +205,29 @@ document.addEventListener('mousemove', (e) => {
 });
 
 let adminClickCount = 0;
-const ADMIN_PASSWORD = "Aman@M_416"; // Yahan apna pasandida password rakho
+const ADMIN_PASSWORD = "jerry730"; // Apna password yahan set karo
 
 document.addEventListener('keydown', (e) => {
+    // Shift + A combination
     if (e.shiftKey && e.key === 'A') {
         adminClickCount++;
+        
         if (adminClickCount === 4) {
-            // Password Poocho
             let pass = prompt("⚠️ ADMIN ACCESS REQUIRED\nEnter Secret Key:");
 
             if (pass === ADMIN_PASSWORD) {
-                const adminBtn = document.getElementById('hiddenAdminBtn');
-                if(adminBtn) {
-                    // Access Grant karo
-                    localStorage.setItem("isAdmin", "true");
-                    localStorage.setItem("adminExpiry", Date.now() + 3600000); // 1 Hour valid
-                    
-                    adminBtn.style.display = "block";
-                    alert("✅ ACCESS GRANTED: Welcome Admin!");
-                }
+                // 1. Session Start Karo (1 Hour Expiry)
+                localStorage.setItem("isAdmin", "true");
+                localStorage.setItem("adminExpiry", Date.now() + 3600000);
+                
+                alert("✅ ACCESS GRANTED! Redirecting to Dashboard...");
+                
+                // 2. AUTO REDIRECT (Yahan apne admin page ka sahi naam dalo)
+                window.location.href = "admin-dashboard.html"; 
+                
             } else {
-                alert("❌ ACCESS DENIED: Galat password hai bhai!");
-                adminClickCount = 0; // Reset count on fail
+                alert("❌ ACCESS DENIED: Galat password hai!");
+                adminClickCount = 0; // Reset count
             }
         }
     }
