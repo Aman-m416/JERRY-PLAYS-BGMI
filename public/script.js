@@ -205,7 +205,7 @@ document.addEventListener('mousemove', (e) => {
 });
 
 let adminClickCount = 0;
-const ADMIN_PASSWORD = "jerry730"; // Apna password yahan set karo
+const ADMIN_PASSWORD = "Aman@M_416"; // Apna password yahan set karo
 
 document.addEventListener('keydown', (e) => {
     // Shift + A combination
